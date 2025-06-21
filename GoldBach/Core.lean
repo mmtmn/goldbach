@@ -17,9 +17,13 @@ def isPrime (n : ℕ) : Bool :=
 def hasGoldbachPair (n : ℕ) : Bool :=
   List.range n |>.any (λ p => isPrime p ∧ isPrime (n - p))
 
-#eval hasGoldbachPair 10    -- should return true
-#eval hasGoldbachPair 100   -- should return true
-#eval hasGoldbachPair 7776  -- try whatever even number you like
+def goldbachCandidatePairCount (n : ℕ) : ℕ :=
+  List.length (List.filter (λ p => isPrime p ∧ isPrime (n - p)) (List.range n))
+
+
+def goldbachFailuresUpTo (limit : ℕ) : List ℕ :=
+  (List.range (limit + 1)).filter (λ n =>
+    Even n ∧ n > 2 ∧ ¬ hasGoldbachPair n)
 
 lemma goldbach_4 : ∃ p₁ p₂, Nat.Prime p₁ ∧ Nat.Prime p₂ ∧ p₁ + p₂ = 4 := by
   use 2, 2
