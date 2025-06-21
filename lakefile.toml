@@ -1,0 +1,10 @@
+name = "goldbach"
+version = "0.1.0"
+defaultTargets = ["goldbach"]
+
+[[lean_lib]]
+name = "Goldbach"
+
+[[lean_exe]]
+name = "goldbach"
+root = "Main"
