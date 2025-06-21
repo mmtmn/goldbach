@@ -17,9 +17,8 @@ def isPrime (n : ℕ) : Bool :=
 def hasGoldbachPair (n : ℕ) : Bool :=
   List.range n |>.any (λ p => isPrime p ∧ isPrime (n - p))
 
-def goldbachCandidatePairCount (n : ℕ) : ℕ :=
+def goldbachCandidatePairCount (n : ℕ) : Nat :=
   List.length (List.filter (λ p => isPrime p ∧ isPrime (n - p)) (List.range n))
-
 
 def goldbachFailuresUpTo (limit : ℕ) : List ℕ :=
   (List.range (limit + 1)).filter (λ n =>

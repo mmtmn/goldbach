@@ -10,3 +10,7 @@ def main : IO Unit := do
     IO.println "No failures detected."
   else
     IO.println s!"Failures: {failures}"
+  IO.println "Sample Goldbach pair counts (even n from 4 to 100):"
+  for n in List.range 101 do
+    if Even n ∧ n > 2 then
+      IO.println s!"n = {n}, pairs = {goldbachCandidatePairCount n}"
